@@ -253,28 +253,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="bg-foreground py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold text-background mb-6">
-            Ready to Transform Public Spaces?
-          </h2>
-          <p className="text-xl text-muted mb-8">
-            Join the movement toward better, more sustainable public furniture. 
-            Your city deserves spaces where people actually want to spend time.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
-              Start Your Project
-            </Button>
-            <Button variant="outline" size="lg" className="border-background text-background hover:bg-background hover:text-foreground">
-              Schedule Consultation
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-background border-t py-12 px-4">
         <div className="container mx-auto max-w-6xl">
