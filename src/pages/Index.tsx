@@ -1,12 +1,275 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Users, Building2, Leaf, Shield, Sun, MapPin } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-green-50 to-emerald-100 py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <Badge className="bg-emerald-600 text-white hover:bg-emerald-700">
+                Next-Generation Public Furniture
+              </Badge>
+              <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                Transform Your City's
+                <span className="text-emerald-600 block">Public Spaces</span>
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Modular, eco-friendly furniture that brings comfort, shade, and style to parks and workspaces. 
+                Made with sustainable geopolymers for a better tomorrow.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white group">
+                  Shape Your City's Future
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button variant="outline" size="lg" className="border-emerald-600 text-emerald-700 hover:bg-emerald-50">
+                  Contact Our Team
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 pt-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-600">50%</div>
+                  <div className="text-sm text-muted-foreground">Less Carbon</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-600">100%</div>
+                  <div className="text-sm text-muted-foreground">Recyclable</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-600">25+</div>
+                  <div className="text-sm text-muted-foreground">Configurations</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="bg-gradient-to-br from-emerald-400 to-green-600 rounded-3xl p-8 shadow-2xl">
+                <div className="bg-white rounded-2xl p-6 space-y-4">
+                  <div className="h-4 bg-emerald-200 rounded w-3/4"></div>
+                  <div className="h-4 bg-emerald-100 rounded w-1/2"></div>
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="h-20 bg-emerald-50 rounded-lg flex items-center justify-center">
+                      <Sun className="h-8 w-8 text-emerald-600" />
+                    </div>
+                    <div className="h-20 bg-emerald-50 rounded-lg flex items-center justify-center">
+                      <Leaf className="h-8 w-8 text-emerald-600" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call-to-Action Banner */}
+      <section className="bg-emerald-600 py-8 px-4">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+            Your Voice Matters - Help Us Build Better Cities!
+          </h2>
+          <p className="text-emerald-100 text-lg mb-6">
+            Take 3 minutes to tell us what your city needs. Every response shapes the future of public spaces.
+          </p>
+          <Button size="lg" variant="secondary" className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold">
+            Take the City Survey
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Solving Real Problems in Public Spaces
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              From lack of shade to uncomfortable seating, we've reimagined public furniture 
+              to address the challenges people face every day.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-emerald-200 hover:border-emerald-400 transition-colors">
+              <CardContent className="p-8 text-center">
+                <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Sun className="h-8 w-8 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Integrated Shade</h3>
+                <p className="text-muted-foreground">
+                  Built-in canopies and strategic design provide essential shade, 
+                  making public spaces comfortable even on the hottest days.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-emerald-200 hover:border-emerald-400 transition-colors">
+              <CardContent className="p-8 text-center">
+                <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Leaf className="h-8 w-8 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Eco-Friendly Materials</h3>
+                <p className="text-muted-foreground">
+                  Made with sustainable geopolymers that reduce environmental impact 
+                  while providing superior durability and weather resistance.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-emerald-200 hover:border-emerald-400 transition-colors">
+              <CardContent className="p-8 text-center">
+                <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Shield className="h-8 w-8 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Modular Design</h3>
+                <p className="text-muted-foreground">
+                  Flexible configurations adapt to any space, from intimate park corners 
+                  to large corporate outdoor areas. Easy installation and maintenance.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Target Audiences */}
+      <section className="bg-slate-50 py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Municipal Authorities */}
+            <div className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <MapPin className="h-8 w-8 text-blue-600" />
+                </div>
+                <h2 className="text-3xl font-bold text-foreground">For Municipal Leaders</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="border-l-4 border-blue-500 pl-6">
+                  <h3 className="text-xl font-semibold mb-2">Increase Public Space Usage</h3>
+                  <p className="text-muted-foreground">
+                    Transform underutilized areas into vibrant community hubs that residents actually want to use.
+                  </p>
+                </div>
+                
+                <div className="border-l-4 border-blue-500 pl-6">
+                  <h3 className="text-xl font-semibold mb-2">Meet Sustainability Goals</h3>
+                  <p className="text-muted-foreground">
+                    Demonstrate environmental leadership with furniture that aligns with green city initiatives.
+                  </p>
+                </div>
+                
+                <div className="border-l-4 border-blue-500 pl-6">
+                  <h3 className="text-xl font-semibold mb-2">Reduce Maintenance Costs</h3>
+                  <p className="text-muted-foreground">
+                    Durable geopolymer construction means less frequent replacement and lower long-term costs.
+                  </p>
+                </div>
+              </div>
+
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                Request Municipal Proposal
+              </Button>
+            </div>
+
+            {/* Corporate Clients */}
+            <div className="space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="bg-purple-100 p-3 rounded-full">
+                  <Building2 className="h-8 w-8 text-purple-600" />
+                </div>
+                <h2 className="text-3xl font-bold text-foreground">For Corporate Spaces</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="border-l-4 border-purple-500 pl-6">
+                  <h3 className="text-xl font-semibold mb-2">Attract Employees Back</h3>
+                  <p className="text-muted-foreground">
+                    Create inviting outdoor workspaces that make the office more appealing than home.
+                  </p>
+                </div>
+                
+                <div className="border-l-4 border-purple-500 pl-6">
+                  <h3 className="text-xl font-semibold mb-2">Boost Corporate Image</h3>
+                  <p className="text-muted-foreground">
+                    Show commitment to employee wellbeing and environmental responsibility.
+                  </p>
+                </div>
+                
+                <div className="border-l-4 border-purple-500 pl-6">
+                  <h3 className="text-xl font-semibold mb-2">Flexible Installation</h3>
+                  <p className="text-muted-foreground">
+                    Modular design adapts to courtyards, terraces, and outdoor meeting areas.
+                  </p>
+                </div>
+              </div>
+
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                Get Corporate Quote
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="bg-foreground py-20 px-4">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl font-bold text-background mb-6">
+            Ready to Transform Public Spaces?
+          </h2>
+          <p className="text-xl text-muted mb-8">
+            Join the movement toward better, more sustainable public furniture. 
+            Your city deserves spaces where people actually want to spend time.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white">
+              Start Your Project
+            </Button>
+            <Button variant="outline" size="lg" className="border-background text-background hover:bg-background hover:text-foreground">
+              Schedule Consultation
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-background border-t py-12 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+              <p className="text-muted-foreground">
+                Ready to discuss your project? Get in touch with our team of experts.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Sustainability</h3>
+              <p className="text-muted-foreground">
+                Learn more about our eco-friendly geopolymer materials and environmental impact.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Installation</h3>
+              <p className="text-muted-foreground">
+                Discover how our modular system makes installation quick and efficient.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
