@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -70,19 +69,50 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Call-to-Action Banner */}
-      <section className="bg-emerald-600 py-8 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4">
-            Your Voice Matters - Help Us Build Better Cities!
+      {/* Enhanced Survey Call-to-Action Banner */}
+      <section className="bg-gradient-to-r from-emerald-600 to-green-700 py-12 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container mx-auto max-w-5xl text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6">
+            <Users className="h-5 w-5 text-white" />
+            <span className="text-white font-medium">Your Voice Shapes the Future</span>
+          </div>
+          
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+            Don't Just Dream About Better Public Spaces - 
+            <span className="block text-emerald-100">Help Us Build Them!</span>
           </h2>
-          <p className="text-emerald-100 text-lg mb-6">
-            Take 3 minutes to tell us what your city needs. Every response shapes the future of public spaces.
+          
+          <p className="text-emerald-100 text-lg mb-6 max-w-3xl mx-auto">
+            Every great public space starts with understanding what people actually need. 
+            Take 3 minutes to share your experience and help us design furniture that truly serves your community.
           </p>
-          <Button size="lg" variant="secondary" className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold">
-            Take the City Survey
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+            <Button size="lg" variant="secondary" className="bg-white text-emerald-700 hover:bg-emerald-50 font-semibold text-lg px-8 py-6 group">
+              <Users className="mr-2 h-6 w-6" />
+              Take the 3-Minute Survey
+              <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <div className="text-emerald-100 text-sm">
+              ✨ Already 1,247 people helped shape the future
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-center">
+            <div className="bg-white/10 rounded-lg p-4">
+              <div className="text-2xl font-bold text-white mb-1">3 min</div>
+              <div className="text-emerald-100 text-sm">Quick & Easy</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-4">
+              <div className="text-2xl font-bold text-white mb-1">100%</div>
+              <div className="text-emerald-100 text-sm">Anonymous</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-4">
+              <div className="text-2xl font-bold text-white mb-1">Real</div>
+              <div className="text-emerald-100 text-sm">Impact</div>
+            </div>
+          </div>
         </div>
       </section>
 
