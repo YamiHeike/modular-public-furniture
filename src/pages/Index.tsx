@@ -10,8 +10,28 @@ import {
   Sun,
   MapPin,
 } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
+import photo from "../../public/us.jpg";
 
 const Index = () => {
+  const surveyTime = 5;
+  const { toast } = useToast();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.state?.fromFormSubmit) {
+      toast({
+        title: "Dziękuję!",
+        description: "Dostaliśmy Twoje wyniki!",
+      });
+
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate, toast]);
+
   return (
     <div className="min-h-screen bg-background">
       <section className="relative overflow-hidden bg-gradient-to-br from-green-50 to-emerald-100 py-20 px-4">
@@ -19,32 +39,25 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <Badge className="bg-emerald-600 text-white hover:bg-emerald-700">
-                Next-Generation Public Furniture
+                Meble miejskie nowej generacji
               </Badge>
               <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Transform Your City's
-                <span className="text-emerald-600 block">Public Spaces</span>
+                Transformacja
+                <span className="text-emerald-600 block">
+                  przestrzeni miejskiej
+                </span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Modular, eco-friendly furniture that brings comfort, shade, and
-                style to parks and workspaces. Made with sustainable geopolymers
-                for a better tomorrow.
+                Modułowe, ekologiczne i stylowe meble, które zapewniają komfort
+                oraz cień w parkach oraz przestrzeniach do pracy. Wykonane z
+                trwałych geopolimerów z myślą o lepszym jutrze.
               </p>
             </div>
 
             <div className="relative">
               <div className="bg-gradient-to-br from-emerald-400 to-green-600 rounded-3xl p-8 shadow-2xl">
                 <div className="bg-white rounded-2xl p-6 space-y-4">
-                  <div className="h-4 bg-emerald-200 rounded w-3/4"></div>
-                  <div className="h-4 bg-emerald-100 rounded w-1/2"></div>
-                  <div className="grid grid-cols-2 gap-4 pt-4">
-                    <div className="h-20 bg-emerald-50 rounded-lg flex items-center justify-center">
-                      <Sun className="h-8 w-8 text-emerald-600" />
-                    </div>
-                    <div className="h-20 bg-emerald-50 rounded-lg flex items-center justify-center">
-                      <Leaf className="h-8 w-8 text-emerald-600" />
-                    </div>
-                  </div>
+                  <img src={photo} />
                 </div>
               </div>
             </div>
@@ -57,48 +70,54 @@ const Index = () => {
           <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6">
             <Users className="h-5 w-5 text-white" />
             <span className="text-white font-medium">
-              Your Voice Shapes the Future
+              Razem tworzymy przyszłość
             </span>
           </div>
 
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Don't Just Dream About Better Public Spaces -
-            <span className="block text-emerald-100">Help Us Build Them!</span>
+            Marzysz o wygodnych miejscach pracy i odpoczynku?
+            <span className="block text-emerald-100">
+              Pomóż nam je stworzyć!
+            </span>
           </h2>
 
           <p className="text-emerald-100 text-lg mb-6 max-w-3xl mx-auto">
-            Every great public space starts with understanding what people
-            actually need. Take 3 minutes to share your experience and help us
-            design furniture that truly serves your community.
+            Chcemy poznać potrzeby mieszkańców! Twoja opinia ma znaczenie –
+            wypełnij krótką ankietę (to tylko {surveyTime} minuty!) i pomóż nam
+            zaprojektować meble, których Twoja społeczność naprawdę potrzebuje
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="bg-white text-emerald-700 hover:bg-emerald-50 font-semibold text-lg px-8 py-6 group"
-            >
-              <Users className="mr-2 h-6 w-6" />
-              Take the 3-Minute Survey
-              <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link to="/survey">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="bg-white text-emerald-700 hover:bg-emerald-50 font-semibold text-lg px-8 py-6 group"
+              >
+                <Users className="mr-2 h-6 w-6" />
+                Wypełnij {surveyTime}-minutową ankietę
+                <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
             <div className="text-emerald-100 text-sm">
-              ✨ You're in good company — add your voice
+              ✨ Jesteś wśród tych, którym zależy - podziel się swoją opinią!
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-center">
             <div className="bg-white/10 rounded-lg p-4">
-              <div className="text-2xl font-bold text-white mb-1">3 min</div>
-              <div className="text-emerald-100 text-sm">Quick & Easy</div>
+              <div className="text-2xl font-bold text-white mb-1">
+                {surveyTime} min
+              </div>
+              <div className="text-emerald-100 text-sm">Szybko i łatwo</div>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
               <div className="text-2xl font-bold text-white mb-1">100%</div>
-              <div className="text-emerald-100 text-sm">Anonymous</div>
+              <div className="text-emerald-100 text-sm">Anonimowo</div>
             </div>
             <div className="bg-white/10 rounded-lg p-4">
-              <div className="text-2xl font-bold text-white mb-1">Real</div>
-              <div className="text-emerald-100 text-sm">Impact</div>
+              <div className="text-2xl font-bold text-white mb-1">Realny</div>
+              <div className="text-emerald-100 text-sm">Wpływ</div>
             </div>
           </div>
         </div>
@@ -107,11 +126,12 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Solving Real Problems in Public Spaces
+              Meble miejskie, które naprawdę działają
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From lack of shade to uncomfortable seating, we've reimagined
-              public furniture to address the challenges people face every day.
+              Brakuje cienia? Ławki niewygodne? Przeprojektowaliśmy meble
+              miejskie tak, by naprawdę odpowiadały na codzienne potrzeby –
+              również te, które zwykle są pomijane.
             </p>
           </div>
 
@@ -121,11 +141,11 @@ const Index = () => {
                 <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Sun className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Integrated Shade</h3>
+                <h3 className="text-xl font-semibold mb-4">Przyjemny cień</h3>
                 <p className="text-muted-foreground">
-                  Built-in canopies and strategic design provide essential
-                  shade, making public spaces comfortable even on the hottest
-                  days.
+                  Dzięki wbudowanym daszkom i przemyślanemu projektowi,
+                  publiczne miejsca stają się przyjazne i komfortowe,
+                  niezależnie od pogody.
                 </p>
               </CardContent>
             </Card>
@@ -136,12 +156,12 @@ const Index = () => {
                   <Leaf className="h-8 w-8 text-emerald-600" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">
-                  Eco-Friendly Materials
+                  Materiały Przyjazne Środowisku
                 </h3>
                 <p className="text-muted-foreground">
-                  Made with sustainable geopolymers that reduce environmental
-                  impact while providing superior durability and weather
-                  resistance.
+                  Wykorzystujemy ekologiczne geopolimery, które zmniejszają
+                  wpływ na środowisko, zapewniając jednocześnie wyjątkową
+                  trwałość i odporność na warunki atmosferyczne.
                 </p>
               </CardContent>
             </Card>
@@ -151,11 +171,11 @@ const Index = () => {
                 <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Shield className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Modular Design</h3>
+                <h3 className="text-xl font-semibold mb-4">Modułowy Design</h3>
                 <p className="text-muted-foreground">
-                  Flexible configurations adapt to any space, from intimate park
-                  corners to large corporate outdoor areas. Easy installation
-                  and maintenance.
+                  Dopasuje się do każdej przestrzeni — od przytulnych zakątków w
+                  parkach po nowoczesne przestrzenie przy biurach. Szybki
+                  montaż, bezproblemowa konserwacja.
                 </p>
               </CardContent>
             </Card>
@@ -171,91 +191,80 @@ const Index = () => {
                   <MapPin className="h-8 w-8 text-blue-600" />
                 </div>
                 <h2 className="text-3xl font-bold text-foreground">
-                  For Municipal Leaders
+                  Dla Władz Miast
                 </h2>
               </div>
 
               <div className="space-y-6">
                 <div className="border-l-4 border-blue-500 pl-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    Increase Public Space Usage
+                    Lepsze Wykorzystanie Przestrzeni Publicznej
                   </h3>
                   <p className="text-muted-foreground">
-                    Transform underutilized areas into vibrant community hubs
-                    that residents actually want to use.
+                    Przekształć mało uczęszczane miejsca w tętniące życiem
+                    centra społeczności, z których mieszkańcy naprawdę chcą
+                    korzystać.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-blue-500 pl-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    Meet Sustainability Goals
+                    Zrównoważony Rozwój
                   </h3>
                   <p className="text-muted-foreground">
-                    Demonstrate environmental leadership with furniture that
-                    aligns with green city initiatives.
+                    Pokaż, że Twoje miasto stawia na ekologię i zieloną
+                    transformację
                   </p>
                 </div>
 
                 <div className="border-l-4 border-blue-500 pl-6">
-                  <h3 className="text-xl font-semibold mb-2">
-                    Reduce Maintenance Costs
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Niższe koszty</h3>
                   <p className="text-muted-foreground">
-                    Durable geopolymer construction means less frequent
-                    replacement and lower long-term costs.
+                    Geopolimery są wyjątkowo trwałe - to oznacza mniej napraw i
+                    niższe koszty utrzymania
                   </p>
                 </div>
               </div>
-
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Request Municipal Proposal
-              </Button>
             </div>
             <div className="space-y-8">
               <div className="flex items-center gap-4">
                 <div className="bg-purple-100 p-3 rounded-full">
                   <Building2 className="h-8 w-8 text-purple-600" />
                 </div>
-                <h2 className="text-3xl font-bold text-foreground">
-                  For Corporate Spaces
-                </h2>
+                <h2 className="text-3xl font-bold text-foreground">Dla firm</h2>
               </div>
 
               <div className="space-y-6">
                 <div className="border-l-4 border-purple-500 pl-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    Attract Employees Back
+                    Ściągnij pracowników z powrotem do biur
                   </h3>
                   <p className="text-muted-foreground">
-                    Create inviting outdoor workspaces that make the office more
-                    appealing than home.
+                    Wygodne przestrzenie na świeżym powietrzu sprawiają, że
+                    praca poza domem znowu ma sens.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-purple-500 pl-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    Boost Corporate Image
+                    Pokaż, że Ci zależy
                   </h3>
                   <p className="text-muted-foreground">
-                    Show commitment to employee wellbeing and environmental
-                    responsibility.
+                    Dobrze zaprojektowana przestrzeń mówi wiele — o trosce o
+                    ludzi i o odpowiedzialnym podejściu do środowiska.
                   </p>
                 </div>
 
                 <div className="border-l-4 border-purple-500 pl-6">
                   <h3 className="text-xl font-semibold mb-2">
-                    Flexible Installation
+                    Łatwy montaż i pełna elastyczność
                   </h3>
                   <p className="text-muted-foreground">
-                    Modular design adapts to courtyards, terraces, and outdoor
-                    meeting areas.
+                    Moduły idealnie wpasują się w każde miejsce — od dziedzińców
+                    po tarasy i strefy spotkań
                   </p>
                 </div>
               </div>
-
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white">
-                Get Corporate Quote
-              </Button>
             </div>
           </div>
         </div>
@@ -264,75 +273,18 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Ready to Get Started?
+              Gotowi do działania?
             </h3>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Whether you're planning a public space transformation or looking
-              to enhance your corporate environment, we're here to help make it
-              happen.
+              Chcesz odmienić przestrzeń publiczną lub stworzyć komfortową
+              strefę na zewnątrz dla swojej firmy? Pomagamy to zrobić szybko i
+              bez zbędnych formalności.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="border-emerald-200 hover:border-emerald-400 transition-colors">
-              <CardContent className="p-6 text-center">
-                <h4 className="text-lg font-semibold mb-2 text-emerald-700">
-                  Contact Us
-                </h4>
-                <p className="text-muted-foreground mb-4">
-                  Ready to discuss your project? Get in touch with our team of
-                  experts.
-                </p>
-                <Button
-                  variant="outline"
-                  className="border-emerald-600 text-emerald-700 hover:bg-emerald-50"
-                >
-                  Get In Touch
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-emerald-200 hover:border-emerald-400 transition-colors">
-              <CardContent className="p-6 text-center">
-                <h4 className="text-lg font-semibold mb-2 text-emerald-700">
-                  Sustainability
-                </h4>
-                <p className="text-muted-foreground mb-4">
-                  Learn more about our eco-friendly geopolymer materials and
-                  environmental impact.
-                </p>
-                <Button
-                  variant="outline"
-                  className="border-emerald-600 text-emerald-700 hover:bg-emerald-50"
-                >
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-emerald-200 hover:border-emerald-400 transition-colors">
-              <CardContent className="p-6 text-center">
-                <h4 className="text-lg font-semibold mb-2 text-emerald-700">
-                  Installation
-                </h4>
-                <p className="text-muted-foreground mb-4">
-                  Discover how our modular system makes installation quick and
-                  efficient.
-                </p>
-                <Button
-                  variant="outline"
-                  className="border-emerald-600 text-emerald-700 hover:bg-emerald-50"
-                >
-                  View Process
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center pt-8 border-t border-emerald-200">
+          <div className="text-center pt-8">
             <p className="text-muted-foreground">
-              © 2024 Modular Public Furniture. Building better public spaces
-              with sustainable design.
+              © 2024 Modular Public Furniture — ulepszamy przestrzeń publiczną z
+              myślą o środowisku
             </p>
           </div>
         </div>
